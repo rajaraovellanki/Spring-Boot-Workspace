@@ -1,0 +1,27 @@
+package com.learning.spring.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.learning.spring.Person;
+import com.learning.spring.repos.PersonRepository;
+
+public class PersonController
+{
+	@Autowired
+	PersonRepository pr;
+	
+	@RequestMapping("/home")
+	public ModelAndView home()
+	{
+		return new ModelAndView("home.jsp");
+	}
+	
+	@RequestMapping("/insertPerson")
+	public ModelAndView insertPerson(Person person)
+	{
+		pr.save(person);
+		return new ModelAndView("home.jsp");
+	}
+}

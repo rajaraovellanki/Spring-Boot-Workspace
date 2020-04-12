@@ -1,0 +1,53 @@
+package com.learning.spring.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.learning.spring.model.Person;
+import com.learning.spring.repositories.PersonRepository;
+
+@RestController
+public class PersonRestController
+{
+	@Autowired
+	PersonRepository pr;
+	
+	//Implement addPerson(), getPerson(), setPerson(), deletePerson() methods
+	
+	/*
+	 * Method to get all the persons using Rest API
+	 * supports/produces both JSON and XML formats
+	 */
+	@GetMapping(path = "/persons", produces = {"application/json","application/xml"})
+	public List<Person> getAllPersons()
+	{
+		return pr.findAll();
+	}
+	
+	/*
+	 * Method to add a person using Rest API
+	 * supports/consumes both JSON and XML formats
+	 * We use @RequestBody to get the object from the client
+	 */
+	@PostMapping(path = "/person", consumes = {"application/json","application/xml"})
+	public void addPerson(@RequestBody Person person)
+	{
+		pr.save(person);
+	}
+	
+	/*
+	 * Method to get a person by ID using Rest API
+	 * We use @PathVariable to get the ID from the client
+	 */
+	@GetMapping(path = "/person/{id}")
+	public Person getPerson(@PathVariable int id)
+	{
+		return pr.findById(id).orElse(new Person());
+	}
+}

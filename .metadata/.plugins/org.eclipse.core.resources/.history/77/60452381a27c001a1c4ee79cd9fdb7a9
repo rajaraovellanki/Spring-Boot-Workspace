@@ -1,0 +1,12 @@
+package com.learning.spring.repositories;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
+
+import com.learning.spring.model.Student;
+
+@RepositoryRestResource(collectionResourceRel = "students", path = "students")
+public interface StudentRestRepository extends JpaRepository<Student, Integer>
+{
+
+}

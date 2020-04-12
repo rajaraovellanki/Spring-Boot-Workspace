@@ -1,0 +1,6 @@
+package com.learning.spring.model;
+
+public class Student
+{
+
+}

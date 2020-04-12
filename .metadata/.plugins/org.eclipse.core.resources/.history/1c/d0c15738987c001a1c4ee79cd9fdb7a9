@@ -1,0 +1,6 @@
+package com.learning.spring.controllers;
+
+public class PersonRestController
+{
+
+}

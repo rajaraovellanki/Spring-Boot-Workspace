@@ -1,0 +1,6 @@
+package com.learning.spring.repositories;
+
+public interface StudentRestRepository
+{
+
+}

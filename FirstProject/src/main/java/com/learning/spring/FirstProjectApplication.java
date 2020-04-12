@@ -1,0 +1,19 @@
+package com.learning.spring;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+
+@SpringBootApplication
+public class FirstProjectApplication 
+{
+
+	public static void main(String[] args) 
+	{
+		ConfigurableApplicationContext cac = SpringApplication.run(FirstProjectApplication.class, args);
+		
+		Person person = cac.getBean(Person.class);
+		person.showLaptop();
+	}
+
+}
